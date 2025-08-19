@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chính Sách | BOOK LAND</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2a5f8a;
+            --secondary-color: #e74c3c;
+            --accent-color: #f39c12;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #333;
+            --text-light: #6c757d;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h1:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1.5rem;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        h2:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 70%;
+            width: 5px;
+            background: var(--secondary-color);
+            border-radius: 3px;
+        }
+        
+        section {
+            margin-bottom: 50px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        ul {
+            padding-left: 0;
+            list-style-type: none;
+        }
+        
+        ul li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        ul li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -3px;
+        }
+        
+        .policy-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            color: var(--secondary-color);
+            vertical-align: middle;
+        }
+        
+        footer {
+            background: #0000FF;
+            color: #FFFFFF;
+            padding: 60px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+            padding-left: 0; 
+        }
+        
+        .footer-links li:before {
+            content: none; 
+        }
+        
+        .footer-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: color 0.3s, padding-left 0.3s;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: #00FF00;
+            padding-left: 5px;
+        }
+        
+        .footer-links i {
+            width: 20px;
+            text-align: center;
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #0000FF;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        header {
+            background: #0000FF;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-section {
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            color: #FF0000;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .header-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .header-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .header-links a:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s;
+        }
+        
+        .header-links a:hover:after {
+            width: 100%;
+        }
+        
+        .breadcrumb {
+            padding: 15px 0;
+            background: #e9ecef;
+            margin-bottom: 30px;
+        }
+        
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .header-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-section">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <h1>BOOK LAND</h1>
+            </div>
+            <nav class="header-links">
+                <a href="trangchu.html"><i class="fas fa-home"></i> TRANG CHỦ</a>
+                <a href="sanpham.html"><i class="fas fa-box"></i> SẢN PHẨM</a>
+                <a href="tintuc.html"><i class="fas fa-newspaper"></i> TIN TỨC</a>
+                <a href="lienhe.html"><i class="fas fa-envelope"></i> LIÊN HỆ</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <h1>Chính Sách Bán Hàng</h1>
+
+    <section id="policy-warranty">
+        <h2><i class="fas fa-shield-alt policy-icon"></i>Chính Sách Bảo Hành</h2>
+        <ul>
+            <li>Sách mới được bảo hành về chất lượng in ấn, đóng gáy trong vòng 30 ngày kể từ ngày mua.</li>
+            <li>Sách bị lỗi in ấn, thiếu trang, hỏng gáy sẽ được đổi mới miễn phí.</li>
+            <li>Không bảo hành đối với sách bị ướt, rách, hư hỏng do người dùng.</li>
+            <li>Sách cũ (nếu có) được kiểm tra kỹ trước khi bán và không áp dụng bảo hành.</li>
+        </ul>
+    </section>
+
+    <section id="policy-exchange">
+        <h2><i class="fas fa-exchange-alt policy-icon"></i>Chính Sách Đổi Trả</h2>
+        <ul>
+            <li>Đổi trả trong vòng 7 ngày nếu sách có lỗi từ nhà xuất bản hoặc giao sai sản phẩm.</li>
+            <li>Sách đổi trả phải còn nguyên vẹn, không có dấu hiệu sử dụng, ghi chú, bẩn, rách.</li>
+            <li>Không áp dụng đổi trả với sách đặc biệt (sách ký tác giả, sách limited edition).</li>
+            <li>Khách hàng chịu phí vận chuyển khi đổi trả không phải do lỗi của BOOK LAND.</li>
+        </ul>
+    </section>
+
+    <section id="policy-payment">
+        <h2><i class="fas fa-credit-card policy-icon"></i>Chính Sách Thanh Toán</h2>
+        <ul>
+            <li>Chấp nhận thanh toán khi nhận hàng (COD) trên toàn quốc.</li>
+            <li>Thanh toán qua chuyển khoản ngân hàng, ví điện tử (Momo, ZaloPay, VNPay).</li>
+            <li>Hỗ trợ trả góp 0% qua thẻ tín dụng của các ngân hàng liên kết.</li>
+            <li>Xác nhận đơn hàng qua điện thoại trước khi giao hàng.</li>
+        </ul>
+    </section>
+
+    <section id="policy-shipping">
+        <h2><i class="fas fa-truck policy-icon"></i>Chính Sách Giao Hàng</h2>
+        <ul>
+            <li>Miễn phí vận chuyển cho đơn hàng từ 300.000đ trở lên.</li>
+            <li>Nội thành Hà Nội & TP.HCM: Giao trong 1-2 ngày làm việc.</li>
+            <li>Các tỉnh thành khác: Giao trong 2-5 ngày làm việc.</li>
+            <li>Đóng gói cẩn thận bằng hộp carton và bọc nylon chống thấm nước.</li>
+            <li>Cho phép kiểm tra hàng trước khi thanh toán.</li>
+        </ul>
+    </section>
+
+    <section id="policy-privacy">
+        <h2><i class="fas fa-lock policy-icon"></i>Chính Sách Bảo Mật</h2>
+        <ul>
+            <li>Cam kết bảo mật thông tin khách hàng tuyệt đối.</li>
+            <li>Không chia sẻ thông tin cá nhân cho bên thứ ba khi chưa được cho phép.</li>
+            <li>Website sử dụng mã hóa SSL đảm bảo an toàn giao dịch.</li>
+            <li>Khách hàng có quyền yêu cầu xóa hoặc cập nhật thông tin cá nhân.</li>
+        </ul>
+    </section>
+
+    <section id="policy-membership">
+        <h2><i class="fas fa-crown policy-icon"></i>Chính Sách Thành Viên</h2>
+        <ul>
+            <li>Tích điểm 5% giá trị đơn hàng cho thành viên thường.</li>
+            <li>Thành viên VIP (từ 10 triệu đồng/năm) được giảm thêm 5% mọi đơn hàng.</li>
+            <li>Ưu tiên tham gia các sự kiện ra mắt sách, gặp gỡ tác giả.</li>
+            <li>Nhận thông báo sớm về các chương trình khuyến mãi đặc biệt.</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2><i class="fas fa-headset policy-icon"></i>Liên Hệ Hỗ Trợ</h2>
+        <ul>
+            <li><strong>Hotline:</strong> 1900 666 888 (8:00 - 22:00 hàng ngày)</li>
+            <li><strong>Email:</strong> bookland@gmail.com</li>
+            <li><strong>TP.HCM:</strong> Đường Nguyễn Văn Bình, Phường Bến Nghé , Quận 1, TP.HCM</li>
+        </ul>
+    </section>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3><i class="fas fa-book-open"></i> BOOK LAND</h3>
+            <ul class="footer-links">
+                <li><i class="fas fa-map-marker-alt"></i>Đường Nguyễn Văn Bình, Phường Bến Nghé, Quận 1, TP.HCM</li>
+                <li><i class="fas fa-phone-alt"></i> 1900 666 888</li>
+                <li><i class="fas fa-envelope"></i> bookland@gmail.com</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>CHÍNH SÁCH BÁN HÀNG</h3>
+            <ul class="footer-links">
+                <li><a href="chinhsach.html"><i class="fas fa-book"></i> Chính sách bảo hành</a></li>
+                <li><a href="chinhsach.html"><i class="fas fa-exchange-alt"></i> Chính sách đổi trả</a></li>
+                <li><a href="chinhsach.html"><i class="fas fa-credit-card"></i> Chính sách thanh toán</a></li>
+                <li><a href="chinhsach.html"><i class="fas fa-shipping-fast"></i> Chính sách giao hàng</a></li>
+                <li><a href="chinhsach.html"><i class="fas fa-lock"></i> Chính sách bảo mật</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+            <ul class="footer-links">
+                <li><a href="hotro.html"><i class="fas fa-info-circle"></i> Hướng dẫn mua hàng</a></li>
+                <li><a href="hotro.html"><i class="fas fa-question-circle"></i> Câu hỏi thường gặp</a></li>
+                <li><a href="hotro.html"><i class="fas fa-headset"></i> Chăm sóc khách hàng</a></li>
+                <li><a href="hotro.html"><i class="fas fa-truck"></i> Theo dõi đơn hàng</a></li>
+                <li><a href="hotro.html"><i class="fas fa-users"></i> Chính sách thành viên</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
+            <ul class="footer-links">
+                <li><a href="https://www.facebook.com/share/1B23wt5nzV/"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                <li><a href="https://www.tiktok.com/@l.th.qunh5?_t=ZS-8yPXRRnOhXs&_r=1"><i class="fab fa-instagram"></i> Instagram</a></li>
+                <li><a href="https://www.instagram.com/quynhlee2504?igsh=MTQyNWh0NHhuams1OQ=="><i class="fab fa-tiktok"></i> TikTok</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2025 Book Land. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

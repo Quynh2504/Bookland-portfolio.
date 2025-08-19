@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --error-color: #ef4444;
+            --success-color: #10b981;
+        }
+        
+        body {
+            background-color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
+        }
+        
+        .login-card {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .login-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .input-field {
+            transition: all 0.3s ease;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .input-field:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .social-btn {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        
+        @keyframes shake {
+            10%, 90% { transform: translateX(-1px); }
+            20%, 80% { transform: translateX(2px); }
+            30%, 50%, 70% { transform: translateX(-4px); }
+            40%, 60% { transform: translateX(4px); }
+        }
+        
+        .password-strength {
+            height: 4px;
+            border-radius: 2px;
+            margin-top: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .strength-0 { width: 0%; background-color: var(--error-color); }
+        .strength-1 { width: 25%; background-color: #f97316; }
+        .strength-2 { width: 50%; background-color: #f59e0b; }
+        .strength-3 { width: 75%; background-color: #84cc16; }
+        .strength-4 { width: 100%; background-color: var(--success-color); }
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+        
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .spinner {
+            animation: spin 1s linear infinite;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #0f172a;
+                color: #f8fafc;
+            }
+            
+            .login-card {
+                background-color: #1e293b;
+                border: 1px solid #334155;
+            }
+            
+            .input-field {
+                background-color: #1e293b;
+                border-color: #334155;
+                color: #f8fafc;
+            }
+            
+            .input-field:focus {
+                border-color: var(--primary-color);
+            }
+            
+            .text-gray-600 {
+                color: #94a3b8;
+            }
+            
+            .text-gray-700 {
+                color: #e2e8f0;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Header với logo -->
+    <header class="bg-white dark:bg-slate-800 py-4 px-6 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center animate__animated animate__fadeIn">
+                <img src="images/sách.png" alt="Logo Book Land" class="h-10 w-10 mr-2">
+                <h1 class="text-xl font-bold text-blue-800 dark:text-blue-400">BOOK LAND</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-700 transition">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block text-yellow-300"></i>
+                </button>
+                <a href="hotro.html" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">Trợ giúp</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="container mx-auto max-w-6xl animate__animated animate__fadeInUp">
+            <div class="flex flex-col md:flex-row rounded-xl overflow-hidden bg-white dark:bg-slate-800 login-card">
+                <!-- Hình ảnh minh họa -->
+                <div class="md:w-1/2 gradient-bg flex items-center justify-center p-8 hidden md:flex">
+                    <div class="text-center max-w-md">
+                        <img src="images/WELCOME TO BOOK LAND.jpg" alt="Thư viện sách" class="mx-auto mb-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300">
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Chào mừng trở lại!</h2>
+                        <p class="text-gray-600 dark:text-gray-300">Đăng nhập để khám phá thế giới sách đa dạng của chúng tôi và tiếp tục hành trình đọc sách của bạn.</p>
+                        <div class="mt-6 flex justify-center space-x-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span class="text-sm text-gray-600 dark:text-gray-300">Hơn 10,000+ đầu sách</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span class="text-sm text-gray-600 dark:text-gray-300">Đọc mọi lúc, mọi nơi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form đăng nhập -->
+                <div class="md:w-1/2 p-8 md:p-12">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-1">Đăng nhập</h2>
+                            <p class="text-gray-600 dark:text-gray-300">Vui lòng nhập thông tin đăng nhập của bạn</p>
+                        </div>
+                        <div class="md:hidden">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8231362b-f3c2-42c2-bf58-0bb8bde0acea.png" alt="Logo nhỏ" class="h-8 w-8">
+                        </div>
+                    </div>
+
+                    <form id="loginForm" class="space-y-6">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                            <input type="email" id="email" name="email" required autocomplete="email"
+                                class="w-full input-field dark:bg-slate-700 dark:border-slate-600 dark:text-white"
+                                placeholder="your@email.com">
+                            <div id="email-error" class="error-message hidden"></div>
+                        </div>
+
+                        <div class="relative">
+                            <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Mật khẩu</label>
+                            <div class="relative">
+                                <input type="password" id="password" name="password" required autocomplete="current-password"
+                                    class="w-full input-field dark:bg-slate-700 dark:border-slate-600 dark:text-white pr-10"
+                                    placeholder="••••••••">
+                                <button type="button" id="togglePassword" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                            </div>
+                            <div id="password-strength" class="password-strength strength-0"></div>
+                            <div id="password-error" class="error-message hidden"></div>
+                            <div class="flex justify-between items-center mt-2">
+                                <div class="flex items-center">
+                                    <input id="remember" name="remember" type="checkbox"
+                                        class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded dark:bg-slate-700 dark:border-slate-600">
+                                    <label for="remember" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">Ghi nhớ đăng nhập</label>
+                                </div>
+                                <a href="#" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">Quên mật khẩu?</a>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="submitBtn"
+                            class="w-full btn-primary text-white font-medium flex items-center justify-center">
+                            <span id="buttonText">Đăng nhập</span>
+                            <span id="spinner" class="spinner hidden ml-2"></span>
+                        </button>
+
+                        <div class="text-center text-sm text-gray-600 dark:text-gray-400">
+                            Chưa có tài khoản? <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Đăng ký ngay</a>
+                        </div>
+
+                        <div class="relative">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-300 dark:border-slate-600"></div>
+                            </div>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="px-2 bg-white dark:bg-slate-800 text-gray-500 dark:text-gray-400">Hoặc đăng nhập bằng</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <a href="#"
+                                class="social-btn bg-white dark:bg-slate-700 border border-gray-300 dark:border-slate-600 text-gray-700 dark:text-gray-300 flex items-center justify-center">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2a0c4609-b9f0-47cb-aec8-9d67355d55dd.png" alt="Facebook" class="h-5 w-5 mr-2">
+                                <span>Facebook</span>
+                            </a>
+                            <a href="#"
+                                class="social-btn bg-white dark:bg-slate-700 border border-gray-300 dark:border-slate-600 text-gray-700 dark:text-gray-300 flex items-center justify-center">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e3c88c1d-d265-4377-afaf-0d3981eadcfa.png" alt="Google" class="h-5 w-5 mr-2">
+                                <span>Google</span>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white dark:bg-slate-800 py-6 px-6 border-t border-gray-200 dark:border-slate-700 mt-12">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left text-gray-500 dark:text-gray-400 text-sm mb-4 md:mb-0">
+                    © 2025 BookLand. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="chinhsach.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 text-sm">Điều khoản</a>
+                    <a href="hotro.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 text-sm">Bảo mật</a>
+                    <a href="lienhe.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 text-sm">Liên hệ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const html = document.documentElement;
+            
+            // Check for saved theme preference or use preferred color scheme
+            const savedTheme = localStorage.getItem('theme') || 
+                              (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            html.classList.add(savedTheme);
+            
+            themeToggle.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                const theme = html.classList.contains('dark') ? 'dark' : 'light';
+                localStorage.setItem('theme', theme);
+            });
+            
+            // Password strength indicator
+            const passwordInput = document.getElementById('password');
+            const passwordStrength = document.getElementById('password-strength');
+            
+            passwordInput.addEventListener('input', function() {
+                const password = this.value;
+                let strength = 0;
+                
+                // Length check
+                if (password.length >= 8) strength++;
+                if (password.length >= 12) strength++;
+                
+                // Character diversity checks
+                if (/[A-Z]/.test(password)) strength++;
+                if (/[0-9]/.test(password)) strength++;
+                if (/[^A-Za-z0-9]/.test(password)) strength++;
+                
+                // Cap at 4 for our meter
+                strength = Math.min(strength, 4);
+                
+                // Update strength meter
+                passwordStrength.className = 'password-strength strength-' + strength;
+            });
+            
+            // Toggle password visibility
+            const togglePassword = document.getElementById('togglePassword');
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.innerHTML = type === 'password' ? '<i class="far fa-eye"></i>' : '<i class="far fa-eye-slash"></i>';
+            });
+            
+            // Form validation and submission
+            const loginForm = document.getElementById('loginForm');
+            const emailInput = document.getElementById('email');
+            const submitBtn = document.getElementById('submitBtn');
+            const buttonText = document.getElementById('buttonText');
+            const spinner = document.getElementById('spinner');
+            
+            // Validate email
+            function validateEmail() {
+                const email = emailInput.value.trim();
+                const emailError = document.getElementById('email-error');
+                
+                if (!email) {
+                    showError(emailError, 'Vui lòng nhập địa chỉ email');
+                    return false;
+                }
+                
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    showError(emailError, 'Vui lòng nhập địa chỉ email hợp lệ');
+                    return false;
+                }
+                
+                hideError(emailError);
+                return true;
+            }
+            
+            // Validate password
+            function validatePassword() {
+                const password = passwordInput.value.trim();
+                const passwordError = document.getElementById('password-error');
+                
+                if (!password) {
+                    showError(passwordError, 'Vui lòng nhập mật khẩu');
+                    return false;
+                }
+                
+                if (password.length < 8) {
+                    showError(passwordError, 'Mật khẩu phải có ít nhất 8 ký tự');
+                    return false;
+                }
+                
+                hideError(passwordError);
+                return true;
+            }
+            
+            // Show error message
+            function showError(element, message) {
+                element.textContent = message;
+                element.classList.remove('hidden');
+                element.classList.add('animate__animated', 'animate__headShake');
+                setTimeout(() => {
+                    element.classList.remove('animate__headShake');
+                }, 1000);
+            }
+            
+            // Hide error message
+            function hideError(element) {
+                element.classList.add('hidden');
+            }
+            
+            // Form submission
+            loginForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const isEmailValid = validateEmail();
+                const isPasswordValid = validatePassword();
+                
+                if (!isEmailValid || !isPasswordValid) {
+                    return;
+                }
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                buttonText.textContent = 'Đang đăng nhập...';
+                spinner.classList.remove('hidden');
+                
+                const email = emailInput.value.trim();
+                const password = passwordInput.value.trim();
+                const remember = document.getElementById('remember').checked;
+                
+                try {
+                    // In thực tế, bạn sẽ gọi API ở đây
+                    // const response = await fetch('/api/login', {
+                    //     method: 'POST',
+                    //     headers: {
+                    //         'Content-Type': 'application/json',
+                    //     },
+                    //     body: JSON.stringify({ email, password, remember }),
+                    // });
+                    
+                    // if (!response.ok) {
+                    //     throw new Error(await response.text());
+                    // }
+                    
+                    // Giả lập API call
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    
+                    // Show success message
+                    showToast('success', 'Đăng nhập thành công! Đang chuyển hướng...');
+                    
+                    // Redirect after delay
+                    setTimeout(() => {
+                        window.location.href = '/dashboard';
+                    }, 2000);
+                } catch (error) {
+                    showToast('error', 'Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.');
+                    console.error('Login error:', error);
+                } finally {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    buttonText.textContent = 'Đăng nhập';
+                    spinner.classList.add('hidden');
+                }
+            });
+            
+            // Toast notification
+            function showToast(type, message) {
+                const toast = document.createElement('div');
+                toast.className = `fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg flex items-center animate__animated animate__fadeInRight z-50 ${
+                    type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+                }`;
+                toast.innerHTML = `
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'} mr-2"></i>
+                    <span>${message}</span>
+                `;
+                document.body.appendChild(toast);
+                
+                // Auto remove after 5 seconds
+                setTimeout(() => {
+                    toast.classList.add('animate__fadeOutRight');
+                    setTimeout(() => toast.remove(), 500);
+                }, 5000);
+                
+                // Allow manual close
+                toast.addEventListener('click', () => {
+                    toast.classList.add('animate__fadeOutRight');
+                    setTimeout(() => toast.remove(), 500);
+                });
+            }
+            
+            // Add input validation on blur
+            emailInput.addEventListener('blur', validateEmail);
+            passwordInput.addEventListener('blur', validatePassword);
+            
+            // Add real-time validation while typing (after a delay)
+            let emailTimeout, passwordTimeout;
+            
+            emailInput.addEventListener('input', () => {
+                clearTimeout(emailTimeout);
+                emailTimeout = setTimeout(validateEmail, 500);
+            });
+            
+            passwordInput.addEventListener('input', () => {
+                clearTimeout(passwordTimeout);
+                passwordTimeout = setTimeout(validatePassword, 500);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tin tức</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --primary-color: #0000FF;
+      --secondary-color: #f8f9fa;
+      --accent-color: #ff6b6b;
+      --text-color: #333;
+      --light-text: #777;
+      --white: #fff;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background-color:blue;
+      color: var(--white);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      color: var(--accent-color);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 0.5rem 0.8rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0.8rem;
+      width: calc(100% - 1.6rem);
+      height: 2px;
+      background-color: var(--accent-color);
+      transform: scaleX(0);
+      transition: var(--transition);
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: 1rem;
+    }
+
+    .login-btn {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: var(--transition);
+    }
+
+    .login-btn:hover {
+      color: var(--accent-color);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: blue;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      margin-bottom: 3rem;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 0 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* News Grid */
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      color: var(--primary-color);
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--accent-color);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .news-card {
+      background-color: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .news-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .news-card-img {
+      position: relative;
+      overflow: hidden;
+      height: 200px;
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .news-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .news-category {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: var(--accent-color);
+      color: var(--white);
+      padding: 0.3rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .news-card-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
+    }
+
+    .news-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      color: var(--light-text);
+    }
+
+    .news-meta i {
+      margin-right: 0.3rem;
+    }
+
+    .news-card p {
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      align-self: flex-start;
+    }
+
+    .read-more:hover {
+      color: var(--accent-color);
+      gap: 0.8rem;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      background-color: var(--primary-color);
+      padding: 3rem 1rem;
+      margin: 4rem 0;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .newsletter-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .newsletter h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter p {
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      flex-grow: 1;
+      padding: 0.8rem 1rem;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 1rem;
+    }
+
+    .newsletter-form button {
+      background-color: var(--accent-color);
+      color: var(--white);
+      border: none;
+      padding: 0 1.5rem;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-weight: bold;
+      transition: var(--transition);
+    }
+
+    .newsletter-form button:hover {
+      background-color: #ff5252;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 3rem 0 1.5rem;
+      width: 100%;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-col h4 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--accent-color);
+    }
+
+    .footer-col p {
+      margin-bottom: 1rem;
+      opacity: 0.8;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: var(--transition);
+      display: block;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      padding-left: 5px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: var(--white);
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 99;
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-5px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .header-container {
+        flex-direction: row;
+      }
+      
+      nav ul {
+        gap: 0.5rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        box-shadow: var(--shadow);
+      }
+      
+      nav.active {
+        max-height: 500px;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+        gap: 0.5rem;
+      }
+      
+      .header-actions {
+        flex-direction: column;
+        align-items: stretch;
+        margin-left: 0;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .newsletter-form input,
+      .newsletter-form button {
+        border-radius: 4px;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero {
+        height: 300px;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-book-open"></i>
+        <span>BOOK LAND</span> 
+      </div>
+      
+      <nav id="mainNav">
+        <ul>
+          <li><a href="trangchu.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+          <li><a href="sanpham.html"><i class="fas fa-book-open"></i> Sản phẩm</a></li>
+          <li><a href="tintuc.html" class="active"><i class="fas fa-newspaper"></i> Tin tức</a></li>
+          <li><a href="lienhe.html"><i class="fas fa-envelope"></i> Liên hệ</a></li>
+        </ul>
+      </nav>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Cập nhật tin tức sách mới nhất</h1>
+      <p>Khám phá những cuốn sách mới, tác giả nổi bật và sự kiện văn học đáng chú ý</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- News Section -->
+    <div class="section-title">
+      <h2>Tin tức nổi bật</h2>
+    </div>
+
+    <div class="news-grid">
+      <!-- Bài viết 1 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <img src="images/Bài viết 1.jpg" alt="Sách mới">
+          <span class="news-category">Sách mới</span>
+        </div>
+        <div class="news-card-content">
+          <h3>Nguyễn Nhật Ánh viết sách mới từ ký ức Kính vạn hoa</h3>
+          <div class="news-meta">
+            <span><i class="far fa-calendar-alt"></i> 06/12/2024</span>
+            <span><i class="far fa-user"></i> Hồ Lam-Huy Đoàn</span>
+          </div>
+          <p style="text-align: justify;">Tiệm sách của nàng, tác phẩm mới nhất của nhà văn Nguyễn Nhật Ánh, có ba câu chuyện được kể song song: Tiệm sách của nàng, Trước tuổi mười lăm, Bên kia đồi Quạ.</p>
+          <a href="https://tuoitre.vn/nguyen-nhat-anh-viet-sach-moi-tu-ky-uc-kinh-van-hoa-20241206094355972.htm" class="read-more">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- Bài viết 2 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <img src="images/Bài viết 2.jpg" alt="Tác giả mới">
+          <span class="news-category">Review</span>
+        </div>
+        <div class="news-card-content">
+          <h3>Top 10 cuốn sách self-help hữu ích bán chạy giúp thay đổi cuộc đời bạn</h3>
+          <div class="news-meta">
+            <span><i class="far fa-calendar-alt"></i> 07/12/2024</span>
+            <span><i class="far fa-user"></i> Khải Đặng</span>
+          </div>
+          <p style="text-align: justify;">Trong cuộc sống hiện đại, ai cũng có lúc cảm thấy mất phương hướng hoặc cần động lực để vượt qua khó khăn. Chính lúc này, những cuốn sách self-help sẽ là người bạn đồng hành, mang đến những bài học quý giá và cảm hứng để thay đổi bản thân.</p>
+          <a href="https://www.fahasa.com/blog/top-10-cuon-sach-self-help-huu-ich-ban-chay-giup-thay-doi-cuoc-doi-ban/?srsltid=AfmBOoqmBa6NIY04232zJkvN6gzAkYnafZu4TzvFMm5rC6y9ZBD42Yo9" class="read-more">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- Bài viết 3 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <img src="images/Bài viết 3.jpg" alt="Sách thiếu nhi">
+          <span class="news-category">Sự kiện</span>
+        </div>
+        <div class="news-card-content">
+          <h3>Top 15 truyện Nguyễn Nhật Ánh viết hay nhất mọi thời đại</h3>
+          <div class="news-meta">
+            <span><i class="far fa-calendar-alt"></i> 24/09/2024</span>
+            <span><i class="far fa-user"></i> Thảo Uyên</span>
+          </div>
+          <p style="text-align: justify;">Đọc các bộ truyện Nguyễn Nhật Ánh chính là sở thích nhiều bạn trẻ dùng để tận hưởng thời gian rảnh của mình. Bởi không chỉ mang đến hơi thở thanh xuân, đó còn là thế giới cảm xúc có chút yên bình lại hoài niệm. Là một “mọt truyện” chính hiệu, bạn đã đọc các truyện ngắn hay của Nguyễn Nhật Ánh sau đây chưa, hãy cùng điểm qua ngay.</p>
+          <a href="https://cellphones.com.vn/sforum/truyen-nguyen-nhat-anh" class="read-more">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- Bài viết 4 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <img src="images/Bài viết 4.jpeg" alt="Hội sách">
+          <span class="news-category">Sự kiện</span>
+        </div>
+        <div class="news-card-content">
+          <h3>Tổ chức Giải thưởng Sách Quốc gia lần thứ VIII</h3>
+          <div class="news-meta">
+            <span><i class="far fa-calendar-alt"></i> 06/08/2025</span>
+            <span><i class="far fa-user"></i> CTTĐT</span>
+          </div>
+          <p style="text-align: justify;">Bộ VHTTDL yêu cầu, công tác tổ chức Giải thưởng Sách Quốc gia lần thứ VIII bảo đảm thực hiện đúng quy trình, quy định tại Điều lệ, Quy chế Giải thưởng Sách Quốc gia. Lễ trao Giải thưởng Sách Quốc gia lần thứ VIII được tổ chức trang trọng và truyền thông sâu rộng trước, trong và sau Lễ trao Giải, tạo sự lan tỏa mạnh mẽ trong cộng đồng</p>
+          <a href="https://bvhttdl.gov.vn/to-chuc-giai-thuong-sach-quoc-gia-lan-thu-viii-20250805215739729.htm" class="read-more">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- Bài viết 5 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <img src="images/Bài viết 5.jpg" alt="Tác giả">
+          <span class="news-category">Tác giả</span>
+        </div>
+        <div class="news-card-content">
+          <h3>41 tác phẩm được trao Giải thưởng Sách Quốc gia lần thứ 6</h3>
+          <div class="news-meta">
+            <span><i class="far fa-calendar-alt"></i> 27/12/2023</span>
+            <span><i class="far fa-user"></i> Minh Anh</span>
+          </div>
+          <p style="text-align: justify;">Trong khuôn khổ Lễ trao Giải thưởng Sách Quốc gia lần thứ 6, Hội Xuất bản Việt Nam phối hợp với Nhà xuất bản Chính trị quốc gia Sự thật sẽ trưng bày, triển lãm những cuốn sách, công trình nghiên cứu đặc biệt có giá trị của Tổng Bí thư Nguyễn Phú Trọng cùng nhiều tác phẩm lý luận chính trị quan trọng khác và toàn bộ sách đạt Giải qua các kỳ trao Giải từ lần thứ I đến nay.</p>
+          <a href="https://kinhtedothi.vn/41-tac-pham-duoc-trao-giai-thuong-sach-quoc-gia-lan-thu-6" class="read-more">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- Bài viết 6 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <img src="images/Bài viết 6.jpg" alt="Giải thưởng">
+          <span class="news-category">Sự kiện</span>
+        </div>
+        <div class="news-card-content">
+          <h3>Bước vào thế giới trinh thám của Tần Minh</h3>
+          <div class="news-meta">
+            <span><i class="far fa-calendar-alt"></i> 10/07/2017</span>
+            <span><i class="far fa-user"></i> Trịnh Dung</span>
+          </div>
+          <p style="text-align: justify;">Chân thật, trí tuệ, kịch tính, thú vị và đầy chất nhân văn… hội tụ đầy đủ những yếu tố này, Người sống sót có thể làm thỏa mãn bất cứ độc giả mê truyện trinh thám nào, dù là khó tính nhất.</p>
+          <a href="https://znews.vn/buoc-vao-the-gioi-trinh-tham-cua-tan-minh-post761066.html" class="read-more">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Footer -->
+    <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3><i class="fas fa-book-open"></i> BOOK LAND</h3>
+            <ul class="footer-links">
+                <li><i class="fas fa-map-marker-alt"></i> Đường Nguyễn Văn Bình, Phường Bến Nghé, Quận 1, Thành phố Hồ Chí Minh</li>
+                <li><i class="fas fa-phone"></i> 1900 666 888</li>
+                <li><i class="fas fa-envelope"></i> bookland@gmail.com</li>
+            </ul>
+            <div class="social-links">
+          <a href="https://www.facebook.com/share/1B23wt5nzV/"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.tiktok.com/@l.th.qunh5?_t=ZS-8yPXRRnOhXs&_r=1"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/quynhlee2504?igsh=MTQyNWh0NHhuams1OQ=="><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>CHÍNH SÁCH BÁN HÀNG</h3>
+            <ul class="footer-links">
+                <li><a href="chinhsach.html"><i class="fas fa-shield-alt"></i> Chính sách bảo hành</a></li>
+                <li><a href="chinhsach.html"><i class="fas fa-exchange-alt"></i> Chính sách đổi trả</a></li>
+                <li><a href="chinhsach.html"><i class="fas fa-credit-card"></i> Chính sách thành viên</a></li>
+                <li><a href="chinhsach.html"><i class="fas fa-truck"></i> Chính sách giao hàng</a></li>
+                <li><a href="chinhsach.html"><i class="fas fa-lock"></i> Chính sách bảo mật</a></li>
+                <li><a href="chinhsach.html"><i class="fas fa-user"></i> Chính sách thanh toán</a></li>
+            </ul>
+      </div>
+      <div class="footer-column">
+        <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+            <ul class="footer-links">
+                <li><a href="hotro.html"><i class="fas fa-headset"></i> Trung tâm hỗ trợ</a></li>
+                <li><a href="hotro.html"><i class="fas fa-question-circle"></i> Câu hỏi thường gặp</a></li>
+                <li><a href="hotro.html"><i class="fas fa-envelope"></i> Liên hệ với chúng tôi</a></li>
+                <li><a href="hotro.html"><i class="fas fa-truck"></i> Theo dõi đơn hàng</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Book Land. All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mainNav = document.getElementById('mainNav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+      mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('active');
+      } else {
+        backToTop.classList.remove('active');
+      }
+    });
+    
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

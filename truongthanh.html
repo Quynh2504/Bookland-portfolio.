@@ -1,0 +1,2670 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRƯỞNG THÀNH CÙNG NỖI CÔ ĐƠN-CÔ ĐƠN TÍCH CỰC, TÍCH CỰC THÀNH CÔNG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #0000FF 60%, #0000FF 100%);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(142, 68, 173, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0;
+        }
+
+        .purple-section {
+            background: none;
+            padding: 0;
+            color: #8e44ad;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0;
+            gap: 32px;
+            min-height: 70px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 180px;
+        }
+        
+        .logo i {
+            font-size: 28px;
+            color: #FF0000;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+        
+        .header-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            flex: 1;
+            justify-content: center;
+            min-width: 350px;
+        }
+        
+        .header-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.2s;
+            padding: 6px 0;
+        }
+        
+        .header-links a:hover,
+        .header-links a.active {
+            color: #f1c40f;
+        }
+        
+        .search-cart {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            min-width: 320px;
+            justify-content: flex-end;
+            position: relative;
+        }
+        
+        .search-bar {
+            min-width: 180px;
+            max-width: 240px;
+            width: 100%;
+            margin-right: 8px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        
+        .search-bar i {
+            color: #8e44ad;
+            position: absolute;
+            left: 14px;
+            font-size: 16px;
+        }
+        
+        .search-bar input {
+            border: none;
+            outline: none;
+            padding: 10px 10px 10px 36px;
+            font-size: 15px;
+            width: 100%;
+            background: transparent;
+            color: #222b45;
+        }
+
+        /* Search Results */
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .search-result-item {
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .search-result-item:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .search-result-item img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        
+        .search-result-item .product-name {
+            flex: 1;
+            font-size: 14px;
+        }
+        
+        .search-result-item .product-price {
+            color: #e53935;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .no-results {
+            padding: 10px;
+            color: #666;
+            text-align: center;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .action-btn {
+            background: #8e44ad;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 8px 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        
+        .action-btn:hover {
+            background: #6c3483;
+            transform: translateY(-2px);
+        }
+        
+        .count-badge {
+            background: #e53935;
+            color: #fff;
+            border-radius: 50%;
+            min-width: 20px;
+            height: 20px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 2px;
+            padding: 0 6px;
+            position: relative;
+            top: -1px;
+        }
+        
+        @media (max-width: 900px) {
+            .header-container {
+                flex-direction: column;
+                gap: 12px;
+                align-items: stretch;
+            }
+            .header-links {
+                justify-content: flex-start;
+                margin: 10px 0;
+            }
+            .search-cart {
+                justify-content: flex-end;
+            }
+        }
+        
+        /* Main Product Section */
+        .product-main {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .product-gallery {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .discount-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #e53935;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            z-index: 10;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            border: 1px solid #eee;
+            background: white;
+            margin-bottom: 10px;
+            cursor: zoom-in;
+            transition: all 0.4s cubic-bezier(.4,0,.2,1);
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .thumbnail:hover {
+            border-color: #8e44ad;
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .author {
+            font-size: 18px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        .publisher {
+            font-size: 14px;
+            color: #95a5a6;
+            margin-bottom: 15px;
+        }
+        
+        .product-sku {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .stars {
+            color: #f39c12;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .review-count {
+            color: #8e44ad;
+            font-size: 14px;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+        
+        .price-container {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .current-price {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e53935;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #666;
+            margin-left: 10px;
+            font-size: 18px;
+        }
+        
+        .discount-badge {
+            background: #e53935;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        
+        .promo-banner {
+            background: #fff8e1;
+            border-left: 4px solid #f39c12;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .promo-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .promo-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .promo-list li:before {
+            content: "✓";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .book-details {
+            margin-bottom: 20px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 8px;
+        }
+        
+        .detail-label {
+            font-weight: 500;
+            width: 120px;
+            color: #555;
+        }
+        
+        .detail-value {
+            flex: 1;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background-color: #8e44ad;
+            color: white;
+            flex: 1;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6c3483;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background-color: #f1f1f1;
+            color: #333;
+            flex: 1;
+            border: 1px solid #ddd;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-icon {
+            font-size: 16px;
+        }
+        
+        .delivery-info {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .delivery-row {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        
+        .delivery-icon {
+            color: #8e44ad;
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Product Tabs */
+        .product-tabs {
+            margin: 40px 0;
+        }
+        
+        .tab-header {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .tab-header::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        
+        .tab-btn {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            position: relative;
+            white-space: nowrap;
+        }
+        
+        .tab-btn.active {
+            color: #8e44ad;
+        }
+        
+        .tab-btn.active:after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #8e44ad;
+        }
+        
+        .tab-content {
+            padding: 20px 0;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .specs-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .specs-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .specs-table td:first-child {
+            font-weight: 500;
+            width: 30%;
+            color: #555;
+        }
+        
+        /* Reviews Section */
+        .reviews-section {
+            margin: 40px 0;
+        }
+        
+        .review-summary {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .review-average-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 100px;
+        }
+        
+        .review-average {
+            font-size: 36px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .review-average-text {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .review-stars {
+            margin-right: 20px;
+            font-size: 24px;
+            color: #f39c12;
+        }
+        
+        .review-distribution {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .review-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .review-bar-label {
+            width: 80px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .review-bar-label .stars {
+            font-size: 14px;
+            margin-right: 5px;
+        }
+        
+        .review-bar-progress {
+            flex: 1;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+        
+        .review-bar-fill {
+            height: 100%;
+            background: #27ae60;
+        }
+        
+        .review-bar-count {
+            width: 40px;
+            text-align: right;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .review-list {
+            margin-top: 30px;
+        }
+        
+        .review-card {
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: none;
+        }
+        
+        .review-card:first-child,
+        .review-card:nth-child(2),
+        .review-card:nth-child(3) {
+            display: block;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        
+        .review-author {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .review-date {
+            color: #95a5a6;
+            font-size: 14px;
+        }
+        
+        .review-images {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .review-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .review-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .review-helpful {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .helpful-btn {
+            background: none;
+            border: none;
+            color: #8e44ad;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 5px;
+        }
+        
+        .page-btn {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .page-btn:hover {
+            border-color: #8e44ad;
+            color: #8e44ad;
+        }
+        
+        .page-btn.active {
+            background: #8e44ad;
+            color: white;
+            border-color: #8e44ad;
+        }
+        
+        /* Related Products */
+        .related-products {
+            margin: 40px 0;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #8e44ad;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-card-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #e53935;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .product-card-img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .product-card-body {
+            padding: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .product-card-title {
+            font-size: 16px;
+            margin-bottom: 8px;
+            height: 40px;
+            overflow: hidden;
+            color: #2c3e50;
+        }
+        
+        .product-card-author {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 8px;
+        }
+        
+        .product-card-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .product-card-current {
+            font-weight: bold;
+            color: #e53935;
+            font-size: 18px;
+        }
+        
+        .product-card-original {
+            text-decoration: line-through;
+            color: #95a5a6;
+            font-size: 14px;
+        }
+        
+        .product-card-discount {
+            background: #f39c12;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #0000FF;
+            color: black;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            color: #FF33FF;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: black;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            background: #333;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #8e44ad;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+        }
+        
+        /* Zoom Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #f39c12;
+        }
+
+        /* Review Modal Specific Styles */
+        #reviewModal .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+            animation: slideUp 0.4s;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        #reviewModal .modal-content h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        #reviewModal .form-group {
+            margin-bottom: 20px;
+        }
+        
+        #reviewModal .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        #reviewModal .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border 0.3s;
+        }
+        
+        #reviewModal .form-control:focus {
+            border-color: #8e44ad;
+            outline: none;
+        }
+        
+        #reviewModal textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        #reviewModal .rating-selector {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+        
+        #reviewModal .rating-star {
+            font-size: 30px;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        #reviewModal .rating-star.selected,
+        #reviewModal .rating-star:hover {
+            color: #f39c12;
+        }
+        
+        #reviewModal .image-upload {
+            margin-bottom: 20px;
+        }
+        
+        #reviewModal .upload-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #f5f5f5;
+            border: 1px dashed #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        #reviewModal .upload-btn:hover {
+            background: #eee;
+            border-color: #8e44ad;
+        }
+        
+        #reviewModal .preview-images {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        
+        #reviewModal .preview-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            position: relative;
+        }
+        
+        #reviewModal .remove-image {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e53935;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        #reviewModal .btn-primary {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Cart Modal Styles */
+        .modal#cart-modal .modal-content {
+            background: #fff;
+            border-radius: 8px;
+            padding: 25px;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            animation: slideUp 0.4s;
+        }
+
+        .modal#cart-modal .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal#cart-modal h2 {
+            font-size: 24px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal#cart-modal h2 i {
+            color: #8e44ad;
+        }
+
+        .modal#cart-modal .close-modal {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.3s;
+        }
+        
+        .modal#cart-modal .close-modal:hover {
+            color: #e53935;
+        }
+
+        .modal#cart-modal #cart-items {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .modal#cart-modal .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+            position: relative;
+        }
+        
+        .modal#cart-modal .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .modal#cart-modal .cart-item-img {
+            width: 80px;
+            height: 100px;
+            object-fit: contain;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+
+        .modal#cart-modal .cart-item-info {
+            flex: 1;
+        }
+
+        .modal#cart-modal .cart-item-title {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        
+        .modal#cart-modal .cart-item-author {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+
+        .modal#cart-modal .cart-item-price {
+            color: #e53935;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .modal#cart-modal .cart-item-availability {
+            font-size: 12px;
+            color: #27ae60;
+            margin-bottom: 5px;
+        }
+        
+        .modal#cart-modal .cart-item-availability.out-of-stock {
+            color: #e53935;
+        }
+
+        .modal#cart-modal .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .modal#cart-modal .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .modal#cart-modal .quantity-btn {
+            background: #f5f5f5;
+            border: none;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .modal#cart-modal .quantity-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .modal#cart-modal .quantity-input {
+            width: 40px;
+            text-align: center;
+            border: none;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            padding: 5px;
+        }
+        
+        .modal#cart-modal .quantity-input:focus {
+            outline: none;
+        }
+
+        .modal#cart-modal .remove-item-btn {
+            background: none;
+            border: none;
+            color: #e53935;
+            cursor: pointer;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        .modal#cart-modal .remove-item-btn:hover {
+            color: #c0392b;
+        }
+        
+        .modal#cart-modal .cart-summary {
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        
+        .modal#cart-modal .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .modal#cart-modal .summary-label {
+            color: #7f8c8d;
+        }
+        
+        .modal#cart-modal .summary-value {
+            font-weight: 500;
+        }
+        
+        .modal#cart-modal .summary-total {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 15px 0;
+        }
+
+        .modal#cart-modal .cart-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .modal#cart-modal .cart-actions .btn {
+            flex: 1;
+            padding: 12px;
+        }
+        
+        .modal#cart-modal .promo-code {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .modal#cart-modal .promo-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .modal#cart-modal .apply-promo {
+            background: #8e44ad;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .modal#cart-modal .apply-promo:hover {
+            background: #6c3483;
+        }
+
+        .modal#cart-modal .empty-cart {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .modal#cart-modal .empty-cart i {
+            font-size: 50px;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .modal#cart-modal .empty-cart h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .modal#cart-modal .empty-cart p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .modal#cart-modal .empty-cart .btn {
+            width: 200px;
+            margin: 0 auto;
+        }
+
+        /* Checkout Success Modal */
+        .modal#success-modal .modal-content {
+            background: #fff;
+            border-radius: 8px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: slideUp 0.4s;
+        }
+        
+        .modal#success-modal .success-icon {
+            font-size: 60px;
+            color: #27ae60;
+            margin-bottom: 20px;
+        }
+        
+        .modal#success-modal h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .modal#success-modal p {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .modal#success-modal .order-details {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .modal#success-modal .detail-row {
+            display: flex;
+            margin-bottom: 8px;
+        }
+        
+        .modal#success-modal .detail-label {
+            font-weight: 500;
+            width: 120px;
+            color: #555;
+        }
+        
+        .modal#success-modal .detail-value {
+            flex: 1;
+        }
+        
+        .modal#success-modal .btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transform: translateX(200%);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 350px;
+        }
+
+        .notification.success {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .notification.danger {
+            background-color: #e53935;
+            color: white;
+        }
+        
+        .notification.warning {
+            background-color: #f39c12;
+            color: white;
+        }
+        
+        .notification.info {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .notification i {
+            font-size: 20px;
+        }
+        
+        .notification .close-notification {
+            margin-left: 10px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+        
+        .notification .close-notification:hover {
+            opacity: 1;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .product-main {
+                flex-direction: column;
+            }
+            
+            .product-gallery, .product-info {
+                min-width: 100%;
+            }
+            
+            .modal#cart-modal .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .modal#cart-modal .cart-item-img {
+                width: 100%;
+                height: auto;
+                max-height: 200px;
+            }
+            
+            .modal#cart-modal .cart-actions {
+                flex-direction: column;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* Hiệu ứng giỏ hàng */
+        .shake {
+            animation: shake 0.5s;
+        }
+        
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+    <div class="purple-section">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <h1>BOOK LAND</h1>
+            </div>
+            <nav class="header-links">
+                <a href="trangchu.html"><i class="fas fa-home"></i> TRANG CHỦ</a>
+                <a href="sanpham.html"><i class="fas fa-box"></i> SẢN PHẨM</a>
+                <a href="tintuc.html"><i class="fas fa-newspaper"></i> TIN TỨC</a>
+                <a href="lienhe.html"><i class="fas fa-envelope"></i> LIÊN HỆ</a>
+            </nav>
+            <div class="search-cart">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm sách...">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="showCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Giỏ hàng</span>
+                        <span class="count-badge" id="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </header>
+    
+    <div class="container">
+        
+        <!-- Main Product Section -->
+        <section class="product-main">
+            <div class="product-gallery">
+                <div class="discount-tag">-20%</div>
+                <img id="mainImage" src="images/Trưởng thành.jpg" alt="Trưởng thành" class="main-image">
+                <div class="thumbnail-container">
+                    <img src="images/Trưởng thành A.jpg" alt="Trưởng thành A" class="thumbnail" onclick="changeImage(this)">
+                    <img src="images/Trưởng thành B.jpg" alt="Trưởng thành B" class="thumbnail" onclick="changeImage(this)">
+                    <img src="images/Trưởng thành C.jpg" alt="Trưởng thành C" class="thumbnail" onclick="changeImage(this)">
+                    <img src="images/Trưởng thành D.jpg" alt="Trưởng thành D" class="thumbnail" onclick="changeImage(this)">
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <h1 class="product-title">TRƯỞNG THÀNH CÙNG NỖI CÔ ĐƠN-CÔ ĐƠN TÍCH CỰC, TÍCH CỰC THÀNH CÔNG</h1>
+                <div class="author">Tác giả:Lý Thượng Long</div>
+                
+                <div class="rating">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <a href="#reviews-tab" class="review-count" id="reviewCountLink">128 đánh giá</a>
+                </div>
+                
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">108.000đ</span>
+                        <span class="original-price">135.000đ</span>
+                        <span class="discount-badge">Tiết kiệm 20%</span>
+                    </div>
+                </div>
+                
+                <div class="promo-banner">
+                    <i class="fas fa-gift"></i> Nhận ngay bookmark độc quyền khi mua online
+                </div>
+                
+                             
+                <ul class="promo-list">
+                    <li>Miễn phí vận chuyển toàn quốc cho đơn từ 300.000đ</li>
+                    <li>Tặng kèm bookmark độc quyền khi mua online</li>
+                    <li>Đổi trả trong vòng 7 ngày nếu sách có lỗi</li>
+                    <li>Hỗ trợ đóng gói quà tặng miễn phí</li>
+                </ul>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="addToCartBtn">
+                        <i class="fas fa-shopping-cart btn-icon"></i> Thêm vào giỏ hàng
+                    </button>
+                    <button class="btn btn-secondary" id="wishlistBtn">
+                        <i class="fas fa-heart btn-icon"></i> Yêu thích
+                    </button>
+                </div>
+                
+                <div class="delivery-info">
+                    <div class="delivery-row">
+                        <i class="fas fa-truck delivery-icon"></i>
+                        <div>
+                            <strong>Giao hàng nhanh</strong> - Nhận hàng trong 1-2 ngày tại TP.HCM
+                        </div>
+                    </div>
+                    <div class="delivery-row">
+                        <i class="fas fa-store delivery-icon"></i>
+                        <div>
+                            <strong>Nhận tại cửa hàng</strong> - Có sẵn tại chi nhánh
+                        </div>
+                    </div>
+                    <div class="delivery-row">
+                        <i class="fas fa-shield-alt delivery-icon"></i>
+                        <div>
+                            <strong>Đảm bảo chất lượng</strong> - Sách mới 100%, nguyên bản
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Product Tabs -->
+        <section class="product-tabs">
+            <div class="tab-header">
+                <button class="tab-btn active" onclick="openTab(event, 'description')">Giới thiệu sách</button>
+                <button class="tab-btn" onclick="openTab(event, 'details')">Chi tiết sản phẩm</button>
+                <button class="tab-btn" onclick="openTab(event, 'author')">Tác giả</button>
+                <button class="tab-btn" onclick="openTab(event, 'reviews-tab')">Đánh giá</button>
+                <button class="tab-btn" onclick="openTab(event, 'faq')">Hỏi đáp</button>
+            </div>
+            
+            <div id="description" class="tab-content active">
+                <h4 style="color:blue;background: #fff3cd; border-bottom: 3px solid #ffc107; padding: 8px 15px; display: inline-block;">Giới thiệu sách Trưởng thành cùng nỗi cô đơn </h4>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Trưởng Thành Cùng Nỗi Cô Đơn - Cuốn tản văn nói về hôn nhân và tình yêu của những người “đã từng” trẻ của thế hệ 9x mang tới thông điệp: Người ta hạnh phúc trong sự lo âu, đồng thời lo âu trong sự ngọt ngào của hạnh phúc. </p> 
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Trong thời đại mà mọi thứ dường như biến đổi không ngừng, việc tìm kiếm sự cân bằng và ý nghĩa trong cuộc sống trở thành một thách thức lớn. Cuốn sách "Trưởng Thành Cùng Nỗi Cô Đơn" của tác giả Lý Thượng Long, do Saigon Books phát hành, là một tác phẩm tản văn đầy sâu sắc và cảm xúc, mang đến cho độc giả cái nhìn mới mẻ và tích cực về nỗi cô đơn và quá trình trưởng thành.</p>
+                <h4 style="color:blue;background: #fff3cd; border-bottom: 3px solid #ffc107; padding: 8px 15px; display: inline-block;">Cô đơn tích cực, đích thực thành công</h4>
+                <img src="images/Trưởng thành 1.jpg" alt="Trưởng thành 1" width="500" height="333" style="display: block; margin-left: auto; margin-right: auto;">
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">"Trưởng Thành Cùng Nỗi Cô Đơn" không chỉ đơn thuần là một tập hợp những bài viết về hôn nhân và tình yêu, mà còn là một cuộc hành trình khám phá bản thân trong bối cảnh xã hội hiện đại. Cuốn sách đặt ra những câu hỏi lớn về cách chúng ta sống và yêu thương trong thế giới đầy biến động này. Khi mà tốc độ cuộc sống đang diễn ra quá nhanh, những giá trị truyền thống dần biến mất, và hôn nhân không còn là điều bắt buộc, chúng ta phải đối mặt với sự cô đơn và làm thế nào để biến nó thành một phần của sự trưởng thành.</p>
+                <h4 style="color:blue;background: #fff3cd; border-bottom: 3px solid #ffc107; padding: 8px 15px; display: inline-block;">Hôn nhân và sự thay đổi của thời đại</h4>
+                <img src="images/Trưởng thành 3.jpg" alt="Trưởng thành 2" width="500" height="333" style="display: block; margin-left: auto; margin-right: auto;">
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Lý Thượng Long đã khéo léo khai thác những mâu thuẫn và thách thức trong hôn nhân của thế hệ hiện tại. Nếu trong quá khứ, hôn nhân thường là một điều tất yếu và không thể tránh khỏi, thì ngày nay, chúng ta có quyền lựa chọn sống độc thân và vẫn có thể tìm thấy hạnh phúc. Sự thay đổi này đòi hỏi chúng ta phải suy nghĩ lại về các giá trị cốt lõi của mình và tìm kiếm một lối sống phù hợp hơn với bản thân.</p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Cuốn sách đưa người đọc trở về với những cảm xúc chân thật nhất về tình yêu và hôn nhân, từ những niềm vui ngọt ngào đến những nỗi lo âu sâu kín. Trong những khoảnh khắc ấy, chúng ta nhận ra rằng, dù đã trưởng thành, đôi khi ta vẫn cảm thấy mình chỉ như một đứa trẻ. Lý Thượng Long đã gợi mở cho độc giả một cách tiếp cận mới mẻ và tích cực đối với nỗi cô đơn, biến nó thành một phần không thể thiếu của quá trình trưởng thành.</p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">"Trưởng Thành Cùng Nỗi Cô Đơn" là một cuốn sách không thể bỏ qua dành cho những ai yêu thích thể loại tản văn và đang tìm kiếm sự đồng cảm trong những câu chuyện về hôn nhân và tình yêu. Hãy dành một ngày cuối tuần, cầm cuốn sách này và đọc từ đầu đến cuối, để có một trải nghiệm đầy ý nghĩa và sâu sắc cho riêng mình.</p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Lý Thượng Long đã mang đến cho chúng ta một tác phẩm vô cùng giá trị, giúp chúng ta hiểu rõ hơn về chính mình và cách đối mặt với những thay đổi không ngừng của cuộc sống. "Trưởng Thành Cùng Nỗi Cô Đơn" không chỉ là một cuốn sách, mà còn là một người bạn đồng hành trên con đường tìm kiếm sự trưởng thành và hạnh phúc đích thực.</p>
+                <h4 style="color:blue;background: #fff3cd; border-bottom: 3px solid #ffc107; padding: 8px 15px; display: inline-block;">Nội dung đặc sắc</h4>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;"><strong>Chương 1:</strong> <em>Nhà quay phim Trịnh Trực</em></p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Tôi đi tắm, rồi bước ra ban công, ngắm nhìn vầng trăng tròn vành vạnh. Ở thành phố này, lâu lắm rồi tôi mới thấy một vầng trăng tròn như vậy. Tự dưng cảm thấy thư thái và hạnh phúc hơn bao giờ hết, cảm giác này từ khi lấy vợ đến nay tôi chưa từng có.</p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Thật khó để có những giây phút vừa không có áp lực công việc, vừa không có áp lực gia đình như vậy... chỉ lúc này tôi mới có thể ngẩng đầu ngắm nhìn ánh trăng.</p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;"><strong>Chương 2:</strong><em>Nhiếp ảnh gia Hiểu Duệ</em></p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Khi còn nhỏ, mẹ nói với tôi rằng răng biệt ly là chủ đề của cuộc sống, cô đơn là tất cả của sinh mệnh.</p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Đã có một khoảng thời gian dài tôi rất ghét bố. Bởi vì sự ra đi của ông nên chúng tôi phải chuyển nhà thường xuyên, còn tôi đành phải tạm biệt bạn bè.Cứ mỗi bận chia tay, câu nói của mẹ lại văng vẳng trong tâm trí. Lúc đầu, tôi còn òa khóc, nhưng sau này hiểu ra rằng nếu “yêu biệt ly” là chuyện hết sức bình thường, thì gặp gỡ cũng có nghĩa là chia ly. Thực ra, việc gặp gỡ nhau là vô nghĩa, chia ly mới là chủ đề chính.</p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;"><strong>Chương 3:</strong><em>Chuyên gia trang điểm Trình Dật</em></p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Tại Cục Dân Chính, mọi người đến rồi đi, một số đến để kết hôn, một số đến để ly hôn, còn chúng tôi đến đây để bắt đầu một cuộc sống mới.Trong Cục Dân chính có rất nhiều người, có người đến để kết hôn, có người đến để ly hôn, và chúng tôi đến đây để kết thúc một giai đoạn của cuộc đời.</p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Trong một đêm nào đó tôi chợt nhận ra rằng, hòa đồng là việc khó chịu nhất trong cuộc đời này. Bởi lẽ để hòa đồng, người ta phải từ bỏ bản thân, thích nghi với thói quen của người khác, còn khi kiên trì sống với bản thân, có thể sẽ cô đơn, nhưng trong sự cô đơn ấy, có lẽ ta sẽ hạnh phúc hơn.</p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;"><strong>Chương 4:</strong> <em>Người dẫn chương trình Ngải Kỳ</em></p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Thực tế là gì, ảo ảnh là gì, mơ là gì, thực tại là gì? Ánh sáng mặt trời là gì, bóng tối là gì? Sống là gì, chết là gì?Trong hai tháng qua, tôi luôn tự hỏi mình những câu này, chúng cứ luẩn quẩn trong đầu không ngừng.</p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Tôi giống như đã trải qua một hành trình dài. Trong hai tháng qua, tôi đã đi qua sa mạc Gobi¹, đã đến cùng trời cuối đất, nhìn thấy biển cả và bầu trời xanh, nghe thấy tiếng chim hót và côn trùng kêu, tôi đã đi cả một quãng đường rất xa, nhưng vẫn không biết nhà mình ở đâu...</p>
+                <h3 style="color:black;background:greenyellow; border-bottom: 3px solid palevioletred; padding: 8px 15px; display: inline-block;">“Thế giới này rất rộng, con đường lại rất dài, nếu bạn không dám bước, chẳng ai có thể thay bạn đi tiếp.”</h3>
+            </div>           
+            <div id="details" class="tab-content">
+                <h3>Chi tiết sản phẩm</h3>
+                <table class="specs-table">
+                    <tr>
+                        <td>Tác giả</td>
+                        <td>Lý Thượng Long</td>
+                    </tr>
+                    <tr>
+                        <td>Dịch giả</td>
+                        <td>Nguyễn Thị Kim Phượng</td>
+                    </tr>
+                    <tr>
+                        <td>Nhà xuất bản</td>
+                        <td>Dân Trí</td>
+                    </tr>
+                    <tr>
+                        <td>Năm xuất bản</td>
+                        <td>2023</td>
+                    </tr>
+                    <tr>
+                        <td>Số trang</td>
+                        <td> 328 trang</td>
+                    </tr>
+                    <tr>
+                        <td>Kích thước</td>
+                        <td>20.5 x 14 cm</td>
+                    </tr>
+                    <tr>
+                        <td>Loại bìa</td>
+                        <td> mềm</td>
+                    </tr>
+                    <tr>
+                        <td>Trọng lượng</td>
+                        <td>350 grams</td>
+                    </tr>
+                    <tr>
+                        <td>Độ tuổi</td>
+                        <td>16+</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div id="author" class="tab-content">
+                <h3></h3>
+                <img src="images/Lý Thượng Long.jpg" alt="Lý Thượng Long" style="float: right; width: 200px; margin-left: 20px; border-radius: 4px;">
+                <h4 style="color:blue;background: #fff3cd; border-bottom: 3px solid #ffc107; padding: 8px 15px; display: inline-block;">Đôi nét về cuộc sống và công việc của tác giả Lý Thượng Long</h4>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Lý Thượng Long là tác giả trẻ sở hữu lượng sách bán ra lên đến hàng triệu cuốn. Trong môi trường cạnh tranh quá mức khốc liệt như ở Trung Quốc, số lượng tác giả trẻ có thể đạt được những thành tích như vậy không nhiều.Ngoài việc dành thời gian để viết sách, Lý Thượng Long cũng tham gia vào nhiều lĩnh vực khác như đạo diễn, biên kịch. Thậm chí, Lý Thượng Long còn thành lập hẳn một văn phòng điện ảnh mang tên Bộ Lạc Long Ảnh để đầu tư và phát triển sâu hơn trong lĩnh vực này. Lý Thượng Long đồng thời cũng là nhà sáng lập mạng kaochong.com - trang web hoc và thi tiếng Anh cực kỳ nổi tiếng tại Trung Quốc.</p>
+                <h4 style="color:blue;background: #fff3cd; border-bottom: 3px solid #ffc107; padding: 8px 15px; display: inline-block;">Nhà văn được yêu thích bởi độc giả trẻ</h4>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Dành phần lớn thời gian của mình cho các công việc liên quan đến giới trẻ như giải trí, học tập, thi cử, tác giả Lý Thượng Long dường như rất hiểu người trẻ muốn gì, cần gì và quan tâm đến điều gì. Cũng bởi vậy mà sách của ông đều được giới trẻ đón nhận nhiệt tình, không chỉ riêng tại Trung Quốc mà còn cả ở Việt Nam.</p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Tác giả Lý Thượng Long đã từng vinh dự được nhận các danh hiệu “Nhà văn có sức ảnh hưởng năm 2015 trên đângng.com”, “Nhà văn triển vọng Trung Quốc năm 2014 trên amazon.cn”, được xếp trong nhóm “Mười nhân vật văn hóa có sức ảnh hưởng lớn năm 2016 trên Weibo”</p>
+                <p style="text-align: justify;line-height: 1.5; margin: 15px 0;">Với niềm tin: “Câu chữ trong sách có thể mang lại năng lượng cho mỗi con người”, Lý Thượng Long ươm mầm từng câu chữ và cải thiện qua từng cuốn sách của mình theo thời gian để tác phẩm ngày một tốt lên và đem đến giá trị ý nghĩa, độc đáo hơn với độc giả. </p>
+            </div>
+            
+            <div id="reviews-tab" class="tab-content">
+                <h3>Đánh giá từ độc giả</h3>
+                <div class="review-summary">
+                    <div class="review-average-container">
+                        <div class="review-average">4.5</div>
+                        <div class="review-average-text">trên 5 sao</div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="review-distribution">
+                        <div class="review-bar">
+                            <div class="review-bar-label">
+                                <span class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </span>
+                            </div>
+                            <div class="review-bar-progress">
+                                <div class="review-bar-fill" style="width: 65%;"></div>
+                            </div>
+                            <div class="review-bar-count">85</div>
+                        </div>
+                        <div class="review-bar">
+                            <div class="review-bar-label">
+                                <span class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </span>
+                            </div>
+                            <div class="review-bar-progress">
+                                <div class="review-bar-fill" style="width: 20%;"></div>
+                            </div>
+                            <div class="review-bar-count">25</div>
+                        </div>
+                        <div class="review-bar">
+                            <div class="review-bar-label">
+                                <span class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </span>
+                            </div>
+                            <div class="review-bar-progress">
+                                <div class="review-bar-fill" style="width: 10%;"></div>
+                            </div>
+                            <div class="review-bar-count">12</div>
+                        </div>
+                        <div class="review-bar">
+                            <div class="review-bar-label">
+                                <span class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </span>
+                            </div>
+                            <div class="review-bar-progress">
+                                <div class="review-bar-fill" style="width: 3%;"></div>
+                            </div>
+                            <div class="review-bar-count">4</div>
+                        </div>
+                        <div class="review-bar">
+                            <div class="review-bar-label">
+                                <span class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </span>
+                            </div>
+                            <div class="review-bar-progress">
+                                <div class="review-bar-fill" style="width: 2%;"></div>
+                            </div>
+                            <div class="review-bar-count">2</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="review-filters" style="margin-bottom: 20px;">
+                    <select id="reviewFilter" class="form-control" style="width: 200px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                        <option value="all">Tất cả đánh giá</option>
+                        <option value="5">5 sao</option>
+                        <option value="4">4 sao</option>
+                        <option value="3">3 sao</option>
+                        <option value="2">2 sao</option>
+                        <option value="1">1 sao</option>
+                        <option value="with-images">Có hình ảnh</option>
+                    </select>
+                </div>
+                
+                <div class="review-list">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">Nguyễn Khánh Linh</div>
+                            <div class="review-date">09/08/2023</div>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>Một cuốn sách chạm đến trái tim. Từng câu chữ của Lý Thượng Long nhẹ nhàng nhưng sâu lắng, khiến mình như được soi chiếu lại chính mình trong những ngày cô đơn. Giấy in đẹp, mùi sách mới rất dễ chịu. Đọc xong thấy lòng nhẹ hơn nhiều.</p>
+                        <div class="review-images">
+                            <img src="images/Trưởng thành.jpg" alt="Review image 2" class="review-image">
+                        </div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">Vũ Hải Yến</div>
+                            <div class="review-date">11/08/2025</div>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p>Mình mua tặng bạn và cũng đọc thử, thật sự rất hay. Tác giả như đang trò chuyện với người đọc về những điều ai cũng từng trải qua. Một cuốn sách để giữ bên mình những lúc muốn tìm sự đồng cảm.</p>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">Trần Văn Minh</div>
+                            <div class="review-date">15/08/2025</div>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p>Sách viết giản dị nhưng thấm, đặc biệt là những đoạn tác giả chia sẻ về quá trình trưởng thành đầy thử thách. Mình trừ 0.1 điểm vì một số đoạn hơi buồn quá, nhưng đó cũng là một phần sức hút của sách.</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">Lê Phương Anh</div>
+                            <div class="review-date">20/08/2025</div>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>Đây là cuốn mình đọc chậm rãi từng trang để cảm nhận. Cô đơn trong sách không phải là sự tuyệt vọng, mà là thời gian để hiểu và yêu bản thân hơn. Sách rất hợp đọc vào buổi tối yên tĩnh.</p>
+                        <div class="review-images">
+                            <img src="images/Trưởng thành 1.jpg" alt="Review image 2" class="review-image">
+                            <img src="images/Trưởng thành 2.jpg" alt="Review image 3" class="review-image">
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">Phạm Đức Huy</div>
+                            <div class="review-date">25/08/202508/08/2025</div>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p>Lý Thượng Long có lối viết khiến mình liên tưởng đến những trang nhật ký. Nhiều đoạn khiến mình phải dừng lại suy nghĩ. Trừ nhẹ vì mong sách có thêm vài câu chuyện mang màu sắc lạc quan hơn.</p>
+                    </div>
+                </div>
+                
+                <div class="pagination">
+                    <button class="page-btn active" onclick="showReviews(1)">1</button>
+                    <button class="page-btn" onclick="showReviews(2)">2</button>
+                    <button class="page-btn" onclick="showReviews(3)">3</button>
+                </div>
+                
+                <button class="btn btn-primary" style="margin-top: 20px; width: 100%;" id="writeReviewBtn">
+                    <i class="fas fa-pencil-alt"></i> Viết đánh giá
+                </button>
+            </div>
+            
+            <div id="faq" class="tab-content">
+                <h3>Câu hỏi thường gặp</h3>
+                
+                <div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                    <h4 style="color: #2c3e50; margin-bottom: 8px;">Đọc xong sẽ nhận được điều gì?</h4>
+                    <p style="color: #7f8c8d;">Thấy mình không cô đơn khi đối diện với áp lực và thay đổi; Có thêm góc nhìn mới về trưởng thành; Cảm giác được đồng cảm và an ủi qua từng trang viết.</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                    <h4 style="color: #2c3e50; margin-bottom: 8px;">Cuốn sách này có thể giúp tôi bớt cảm giác lạc lõng không?</h4>
+                    <p style="color: #7f8c8d;">Có. Thông qua những trải nghiệm, suy ngẫm của tác giả, bạn sẽ thấy mình không phải người duy nhất trải qua những khoảnh khắc ấy, từ đó cảm giác được an ủi và nhẹ lòng hơn.</p>
+                </div>
+
+                <div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                    <h4 style="color: #2c3e50; margin-bottom: 8px;">Lý Thượng Long có gì đặc biệt so với các tác giả cùng thể loại?</h4>
+                    <p style="color: #7f8c8d;">Anh viết giản dị nhưng giàu cảm xúc, như đang tâm sự trực tiếp với bạn. Phong cách của Lý Thượng Long vừa chân thật, vừa tinh tế, khiến người đọc cảm thấy gần gũi và đồng cảm.</p>
+                </div>
+
+                <div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                    <h4 style="color: #2c3e50; margin-bottom: 8px;">Sách có kèm bookmark như quảng cáo không?</h4>
+                    <p style="color: #7f8c8d;">Đúng vậy, tất cả đơn hàng mua online đều được tặng kèm bookmark độc quyền của Book Land. Bookmark được đặt trong sách khi giao hàng.</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 20px;">
+                    <h4 style="color: #2c3e50; margin-bottom: 8px;">Tôi có thể đổi trả sách nếu không hài lòng không?</h4>
+                    <p style="color: #7f8c8d;">Bạn có thể đổi trả sách trong vòng 7 ngày nếu sách có lỗi in ấn, giao nhầm sản phẩm hoặc hư hỏng do vận chuyển. Vui lòng giữ lại hóa đơn và liên hệ hotline 1800 666 888 để được hỗ trợ.</p>
+                </div>
+                
+                <div class="ask-question" style="margin-top: 30px;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">Bạn có câu hỏi khác?</h4>
+                    <textarea placeholder="Nhập câu hỏi của bạn..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; min-height: 80px; margin-bottom: 10px;"></textarea>
+                    <button class="btn btn-primary">Gửi câu hỏi</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Related Products -->
+        <section class="related-products">
+            <h2 class="section-title">Sản phẩm tương tự</h2>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-card-badge">Bán chạy</div>
+                    <img src="images/30.jpg" alt="30-Mọi thứ chỉ vừa mới bắt đầu" class="product-card-img">
+                    <div class="product-card-body">
+                        <h3 class="product-card-title">30-Mọi thứ chỉ vừa mới bắt đầu</h3>
+                        <div class="product-card-author">Lý Thượng Long</div>
+                        <div class="product-card-price">
+                            <span class="product-card-current">108.000₫</span>
+                            <span class="product-card-original">135.000₫</span>
+                            <span class="product-card-discount">-20%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="images/Thời gian.jpg" alt="Thời gian" class="product-card-img">
+                    <div class="product-card-body">
+                        <h3 class="product-card-title">Khám phá khoa học-Lược sử Thời gian</h3>
+                        <div class="product-card-author">Stephen Hawking</div>
+                        <div class="product-card-price">
+                            <span class="product-card-current">115.000₫</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-card-badge">Mới</div>
+                    <img src="images/Pháp Y.jpg" alt="Pháp Y Tần Minh-Kẻ lãng quên" class="product-card-img">
+                    <div class="product-card-body">
+                        <h3 class="product-card-title">Pháp Y Tần Minh-Kẻ lãng quên</h3>
+                        <div class="product-card-author">Tần Minh</div>
+                        <div class="product-card-price">
+                            <span class="product-card-current">199.000đ</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-card-badge">Bán chạy</div>
+                    <img src="images/Kinh doanh.jpg" alt="Mô hình bán hàng mới" class="product-card-img">
+                    <div class="product-card-body">
+                        <h3 class="product-card-title">Mô hình bán hàng mới</h3>
+                        <div class="product-card-author">Jerry Acuff & Jeremy Miner</div>
+                        <div class="product-card-price">
+                            <span class="product-card-current">108.000₫</span>
+                            <span class="product-card-original">135.000₫</span>
+                            <span class="product-card-discount">-20%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-column">
+                <h3><i class="fas fa-book-open"></i> BOOK LAND</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> Đường Nguyễn Văn Bình, Phường Bến Nghé, Quận 1, Thành phố Hồ Chí Minh</li>
+                    <li><i class="fas fa-phone"></i> 1900 666 888</li>
+                    <li><i class="fas fa-envelope"></i> bookland@gmail.com</li>
+                </ul>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1B23wt5nzV/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/quynhlee2504?igsh=MTQyNWh0NHhuams1OQ=="><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@l.th.qunh5?_t=ZS-8yPXRRnOhXs&_r=1"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>CHÍNH SÁCH BÁN HÀNG</h3>
+                <ul class="footer-links">
+                    <li><a href="chinhsach.html"><i class="fas fa-lock"></i> Chính sách bảo mật</a></li>
+                    <li><a href="chinhsach.html"><i class="fas fa-exchange-alt"></i> Chính sách đổi trả</a></li>
+                    <li><a href="chinhsach.html"><i class="fas fa-truck"></i> Chính sách vận chuyển</a></li>
+                    <li><a href="chinhsach.html"><i class="fas fa-credit-card"></i> Chính sách thanh toán</a></li>
+                    <li><a href="chinhsach.html"><i class="fas fa-file-contract"></i> Điều khoản sử dụng</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+                <ul class="footer-links">
+                    <li><a href="hotro.html"><i class="fas fa-life-ring"></i> Trung tâm trợ giúp</a></li>
+                    <li><a href="hotro.html"><i class="fas fa-shopping-cart"></i> Hướng dẫn mua hàng</a></li>
+                    <li><a href="hotro.html"><i class="fas fa-truck"></i> Theo dõi đơn hàng</a></li>
+                    <li><a href="hotro.html"><i class="fas fa-question-circle"></i> Câu hỏi thường gặp</a></li>
+                    <li><a href="hotro.html"><i class="fas fa-headset"></i> Liên hệ hỗ trợ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>© 2025 Book Land. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Image Zoom Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="zoomedImage">
+    </div>
+
+    <!-- Review Modal -->
+    <div id="reviewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeReviewModal()">&times;</span>
+            <h3>Viết đánh giá của bạn</h3>
+            <form id="reviewForm">
+                <div class="form-group">
+                    <label for="reviewerName">Tên của bạn *</label>
+                    <input type="text" id="reviewerName" class="form-control" placeholder="Nhập tên của bạn" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Đánh giá của bạn *</label>
+                    <div class="rating-selector">
+                        <i class="far fa-star rating-star" data-rating="1"></i>
+                        <i class="far fa-star rating-star" data-rating="2"></i>
+                        <i class="far fa-star rating-star" data-rating="3"></i>
+                        <i class="far fa-star rating-star" data-rating="4"></i>
+                        <i class="far fa-star rating-star" data-rating="5"></i>
+                        <input type="hidden" id="selectedRating" value="0" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reviewTitle">Tiêu đề đánh giá</label>
+                    <input type="text" id="reviewTitle" class="form-control" placeholder="Tóm tắt đánh giá của bạn">
+                </div>
+                
+                <div class="form-group">
+                    <label for="reviewText">Nội dung đánh giá *</label>
+                    <textarea id="reviewText" class="form-control" placeholder="Hãy chia sẻ cảm nhận của bạn về sản phẩm..." required></textarea>
+                </div>
+                
+                <div class="form-group image-upload">
+                    <label>Hình ảnh đính kèm (tối đa 3 ảnh)</label>
+                    <label for="reviewImages" class="upload-btn">
+                        <i class="fas fa-camera"></i> Chọn ảnh
+                    </label>
+                    <input type="file" id="reviewImages" multiple accept="image/*" style="display: none;">
+                    <div class="preview-images" id="imagePreview"></div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Gửi đánh giá
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-shopping-cart"></i> Giỏ hàng của bạn (<span id="cart-total-items">0</span>)</h2>
+                <button class="close-modal" onclick="closeModal('cart-modal')">&times;</button>
+            </div>
+            
+            <div id="cart-items" class="cart-items-container">
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Giỏ hàng trống</h3>
+                    <p>Hãy thêm sản phẩm vào giỏ hàng để mua sắm!</p>
+                    <button class="btn btn-primary" onclick="closeModal('cart-modal')">
+                        <i class="fas fa-arrow-left"></i> Tiếp tục mua sắm
+                    </button>
+                </div>
+            </div>
+            
+            <div class="cart-summary">
+                <div class="promo-code">
+                    <input type="text" class="promo-input" placeholder="Nhập mã giảm giá">
+                    <button class="apply-promo">Áp dụng</button>
+                </div>
+                
+                <div class="summary-row">
+                    <span class="summary-label">Tạm tính:</span>
+                    <span class="summary-value" id="subtotal">0₫</span>
+                </div>
+                
+                <div class="summary-row">
+                    <span class="summary-label">Giảm giá:</span>
+                    <span class="summary-value" id="discount">0₫</span>
+                </div>
+                
+                <div class="summary-row">
+                    <span class="summary-label">Phí vận chuyển:</span>
+                    <span class="summary-value" id="shipping">0₫</span>
+                </div>
+                
+                <div class="summary-total">
+                    <span>Tổng cộng:</span>
+                    <span id="cart-total-amount">0₫</span>
+                </div>
+                
+                <div class="cart-actions">
+                    <button class="btn btn-secondary" onclick="closeModal('cart-modal')">
+                        <i class="fas fa-arrow-left"></i> Tiếp tục mua sắm
+                    </button>
+                    <button class="btn btn-primary" onclick="checkout()">
+                        <i class="fas fa-credit-card"></i> Thanh toán
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('success-modal')">&times;</span>
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Đặt hàng thành công!</h2>
+            <p>Cảm ơn bạn đã mua sách tại Book Land. Đơn hàng của bạn đã được tiếp nhận và đang được xử lý. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.</p>
+            
+            <div class="order-details">
+                <div class="detail-row">
+                    <div class="detail-label">Mã đơn hàng:</div>
+                    <div class="detail-value">BOOK20250001</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Ngày đặt:</div>
+                    <div class="detail-value">15/08/2024</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Tổng tiền:</div>
+                    <div class="detail-value">0₫</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Hình thức thanh toán:</div>
+                    <div class="detail-value">Thanh toán khi nhận hàng (COD)</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Dự kiến giao hàng:</div>
+                    <div class="detail-value">17/08/2024 - 18/08/2024</div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" onclick="closeModal('success-modal')">
+                <i class="fas fa-check"></i> Đã hiểu
+            </button>
+        </div>
+    </div>
+
+    <!-- Notification Element -->
+    <div id="notification" class="notification" style="display: none;">
+        <i class="fas fa-check-circle"></i>
+        <span id="notification-message">Sản phẩm đã được thêm vào giỏ hàng</span>
+        <span class="close-notification" onclick="closeNotification()">&times;</span>
+    </div>
+
+    <script>
+        // ========== QUẢN LÝ GIỎ HÀNG ==========
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Cập nhật số lượng sản phẩm trong giỏ
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById("cart-count").textContent = totalItems;
+            document.getElementById("cart-total-items").textContent = totalItems;
+        }
+        
+        // Hiển thị giỏ hàng
+        function showCart() {
+            renderCartItems();
+            document.getElementById("cart-modal").style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Render sản phẩm trong giỏ hàng
+        function renderCartItems() {
+            const cartItemsContainer = document.getElementById("cart-items");
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Giỏ hàng trống</h3>
+                        <p>Hãy thêm sản phẩm vào giỏ hàng để mua sắm!</p>
+                        <button class="btn btn-primary" onclick="closeModal('cart-modal')">
+                            <i class="fas fa-arrow-left"></i> Tiếp tục mua sắm
+                        </button>
+                    </div>
+                `;
+                updateCartSummary(0, 0, 0);
+                return;
+            }
+            
+            let cartItemsHTML = '';
+            let subtotal = 0;
+            
+            cart.forEach((item, index) => {
+                const price = parseInt(item.price.replace(/\./g, "").replace("₫", ""));
+                const itemTotal = price * item.quantity;
+                subtotal += itemTotal;
+                
+                cartItemsHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <h3 class="cart-item-title">${item.name}</h3>
+                            <div class="cart-item-author">${item.author}</div>
+                            <div class="cart-item-price">${formatPrice(price)}₫</div>
+                            <div class="cart-item-availability ${item.stock === 0 ? 'out-of-stock' : ''}">
+                                <i class="fas ${item.stock === 0 ? 'fa-times-circle' : 'fa-check-circle'}"></i>
+                                ${item.stock === 0 ? 'Tạm hết hàng' : 'Còn hàng'}
+                            </div>
+                            <div class="cart-item-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn" onclick="updateQuantity(${index}, -1)" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
+                                    <input type="text" class="quantity-input" value="${item.quantity}" readonly>
+                                    <button class="quantity-btn" onclick="updateQuantity(${index}, 1)" ${item.stock === 0 ? 'disabled' : ''}>+</button>
+                                </div>
+                                <button class="remove-item-btn" onclick="removeFromCart(${index})">
+                                    <i class="fas fa-trash"></i> Xóa
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartItemsContainer.innerHTML = cartItemsHTML;
+            
+            // Tính toán giảm giá và phí vận chuyển
+            const discount = subtotal >= 300000 ? subtotal * 0.1 : 0; // Giảm 10% nếu tổng >= 300,000đ
+            const shipping = subtotal >= 300000 || cart.length === 0 ? 0 : 30000; // Miễn phí ship nếu tổng >= 300,000đ
+            
+            updateCartSummary(subtotal, discount, shipping);
+        }
+        
+        // Cập nhật tổng tiền
+        function updateCartSummary(subtotal, discount, shipping) {
+            const total = subtotal - discount + shipping;
+            
+            document.getElementById("subtotal").textContent = formatPrice(subtotal) + "₫";
+            document.getElementById("discount").textContent = "-" + formatPrice(discount) + "₫";
+            document.getElementById("shipping").textContent = shipping === 0 ? "Miễn phí" : formatPrice(shipping) + "₫";
+            document.getElementById("cart-total-amount").textContent = formatPrice(total) + "₫";
+        }
+        
+        // Định dạng giá tiền
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN').format(price);
+        }
+        
+        // Cập nhật số lượng sản phẩm
+        function updateQuantity(index, change) {
+            const newQuantity = cart[index].quantity + change;
+            
+            if (newQuantity < 1) return;
+            
+            cart[index].quantity = newQuantity;
+            saveCart();
+            renderCartItems();
+            updateCartCount();
+        }
+        
+        // Xóa sản phẩm khỏi giỏ hàng
+        function removeFromCart(index) {
+            const removedItem = cart.splice(index, 1)[0];
+            saveCart();
+            renderCartItems();
+            updateCartCount();
+            showNotification(`Đã xóa "${removedItem.name}" khỏi giỏ hàng`, 'success');
+        }
+        
+        // Lưu giỏ hàng vào localStorage
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+        
+        // Thêm sản phẩm vào giỏ hàng
+        document.getElementById("addToCartBtn").addEventListener("click", function() {
+            const product = {
+                id: document.querySelector(".product-sku").textContent.split(":")[1].trim(),
+                name: document.querySelector(".product-title").textContent,
+                price: document.querySelector(".current-price").textContent,
+                image: document.getElementById("mainImage").src,
+                author: document.querySelector(".author").textContent.replace("Tác giả: ", ""),
+                quantity: 1,
+                stock: 10
+            };
+            
+            const existingItemIndex = cart.findIndex(item => item.id === product.id);
+            
+            if (existingItemIndex >= 0) {
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                cart.push(product);
+            }
+            
+            saveCart();
+            updateCartCount();
+            renderCartItems();
+            showNotification(`Đã thêm "${product.name}" vào giỏ hàng`, 'success');
+            
+            // Hiệu ứng rung giỏ hàng
+            const cartBtn = document.querySelector('.action-btn');
+            cartBtn.classList.add('shake');
+            setTimeout(() => cartBtn.classList.remove('shake'), 500);
+        });
+        
+        // Thêm vào danh sách yêu thích
+        document.getElementById("wishlistBtn").addEventListener("click", function() {
+            const productTitle = document.querySelector(".product-title").textContent;
+            showNotification(`Đã thêm "${productTitle}" vào danh sách yêu thích`, 'success');
+        });
+        
+        // Thanh toán
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification("Giỏ hàng trống, không thể thanh toán", "danger");
+                return;
+            }
+            
+            // Kiểm tra sản phẩm hết hàng
+            const outOfStockItems = cart.filter(item => item.stock === 0);
+            if (outOfStockItems.length > 0) {
+                showNotification(`Có ${outOfStockItems.length} sản phẩm tạm hết hàng`, "warning");
+                return;
+            }
+            
+            showNotification("Đang xử lý đơn hàng...", "info");
+            
+            // Giả lập quá trình thanh toán
+            setTimeout(() => {
+                closeModal('cart-modal');
+                document.getElementById('success-modal').style.display = 'flex';
+                
+                // Xóa giỏ hàng sau khi thanh toán thành công
+                cart = [];
+                saveCart();
+                updateCartCount();
+            }, 1500);
+        }
+        
+        // Hiển thị thông báo
+        function showNotification(message, type) {
+            const notification = document.getElementById("notification");
+            const notificationIcon = notification.querySelector('i');
+            const notificationMessage = document.getElementById("notification-message");
+            
+            // Đặt icon phù hợp với loại thông báo
+            if (type === 'success') {
+                notificationIcon.className = 'fas fa-check-circle';
+            } else if (type === 'danger') {
+                notificationIcon.className = 'fas fa-times-circle';
+            } else if (type === 'warning') {
+                notificationIcon.className = 'fas fa-exclamation-circle';
+            } else {
+                notificationIcon.className = 'fas fa-info-circle';
+            }
+            
+            notificationMessage.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.style.display = "flex";
+            
+            setTimeout(() => {
+                notification.style.transform = "translateX(0)";
+            }, 100);
+            
+            // Tự động đóng thông báo sau 5 giây
+            setTimeout(() => {
+                closeNotification();
+            }, 5000);
+        }
+        
+        // Đóng thông báo
+        function closeNotification() {
+            const notification = document.getElementById("notification");
+            notification.style.transform = "translateX(200%)";
+            setTimeout(() => {
+                notification.style.display = "none";
+            }, 300);
+        }
+        
+        // ========== CÁC CHỨC NĂNG KHÁC ==========
+        
+        // Thay đổi ảnh chính khi click vào thumbnail
+        function changeImage(element) {
+            var mainImg = document.getElementById('mainImage');
+            if (mainImg.src === element.src) return;
+            
+            mainImg.style.opacity = 0;
+            mainImg.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                mainImg.src = element.src;
+                mainImg.onload = function() {
+                    mainImg.style.opacity = 1;
+                    mainImg.style.transform = 'scale(1)';
+                };
+            }, 200);
+        }
+        
+        // Tab system
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            tabbuttons = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            
+            // Cuộn đến phần tab nếu là tab đánh giá
+            if (tabName === 'reviews-tab') {
+                document.getElementById('reviews-tab').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // Image zoom
+        document.getElementById('mainImage').onclick = function() {
+            document.getElementById('zoomedImage').src = this.src;
+            document.getElementById('imageModal').style.display = "flex";
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            if (!modalId) {
+                document.getElementById('imageModal').style.display = "none";
+            } else {
+                document.getElementById(modalId).style.display = "none";
+            }
+            document.body.style.overflow = 'auto';
+        }
+
+        // Đóng modal khi click bên ngoài nội dung modal
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal();
+                if (event.target.id === 'cart-modal') {
+                    closeModal('cart-modal');
+                } else if (event.target.id === 'success-modal') {
+                    closeModal('success-modal');
+                }
+            }
+        }
+
+        // Khởi tạo giỏ hàng khi tải trang
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            renderCartItems();
+            
+            // Reset search functionality
+            document.getElementById("searchInput").addEventListener("keyup", function() {
+                document.getElementById("searchResults").style.display = "none";
+            });
+        });
+
+        // Đóng modal review
+        function closeReviewModal() {
+            document.getElementById('reviewModal').style.display = "none";
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Mở modal review
+        document.getElementById('writeReviewBtn').addEventListener('click', function() {
+            document.getElementById('reviewModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Rating stars trong modal review
+        document.querySelectorAll('.rating-star').forEach(star => {
+            star.addEventListener('click', function() {
+                const rating = parseInt(this.getAttribute('data-rating'));
+                const stars = document.querySelectorAll('.rating-star');
+                
+                stars.forEach((s, index) => {
+                    if (index < rating) {
+                        s.classList.remove('far');
+                        s.classList.add('fas', 'selected');
+                    } else {
+                        s.classList.remove('fas', 'selected');
+                        s.classList.add('far');
+                    }
+                });
+                
+                document.getElementById('selectedRating').value = rating;
+            });
+        });
+        
+        // Xử lý upload hình ảnh đánh giá
+        document.getElementById('reviewImages').addEventListener('change', function(e) {
+            const previewContainer = document.getElementById('imagePreview');
+            previewContainer.innerHTML = '';
+            
+            const files = e.target.files;
+            const maxFiles = 3;
+            
+            if (files.length > maxFiles) {
+                showNotification(`Chỉ được upload tối đa ${maxFiles} ảnh`, 'warning');
+                this.value = '';
+                return;
+            }
+            
+            for (let i = 0; i < Math.min(files.length, maxFiles); i++) {
+                const file = files[i];
+                if (!file.type.match('image.*')) continue;
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const previewDiv = document.createElement('div');
+                    previewDiv.style.position = 'relative';
+                    previewDiv.style.display = 'inline-block';
+                    previewDiv.style.margin = '5px';
+                    
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'preview-image';
+                    img.style.width = '80px';
+                    img.style.height = '80px';
+                    img.style.objectFit = 'cover';
+                    img.style.borderRadius = '4px';
+                    
+                    const removeBtn = document.createElement('span');
+                    removeBtn.className = 'remove-image';
+                    removeBtn.innerHTML = '&times;';
+                    removeBtn.onclick = function() {
+                        previewDiv.remove();
+                        // Cần thêm logic xóa file khỏi input nếu cần
+                    };
+                    
+                    previewDiv.appendChild(img);
+                    previewDiv.appendChild(removeBtn);
+                    previewContainer.appendChild(previewDiv);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Xử lý submit form đánh giá
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const rating = document.getElementById('selectedRating').value;
+            if (rating === '0') {
+                showNotification('Vui lòng chọn số sao đánh giá', 'warning');
+                return;
+            }
+            
+            // Giả lập gửi đánh giá thành công
+            showNotification('Cảm ơn bạn đã đánh giá sản phẩm!', 'success');
+            closeReviewModal();
+            this.reset();
+            document.getElementById('imagePreview').innerHTML = '';
+            document.querySelectorAll('.rating-star').forEach(star => {
+                star.classList.remove('fas', 'selected');
+                star.classList.add('far');
+            });
+        });
+
+        // Phân trang đánh giá
+        function showReviews(page) {
+            const reviews = document.querySelectorAll('.review-card');
+            reviews.forEach((review, index) => {
+                review.style.display = (index >= (page-1)*3 && index < page*3) 
+                    ? 'block' : 'none';
+            });
+            
+            // Cập nhật trạng thái active cho nút phân trang
+            document.querySelectorAll('.page-btn').forEach((btn, i) => {
+                if (i+1 === page) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
